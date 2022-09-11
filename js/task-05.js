@@ -7,16 +7,17 @@
 
 // Этапы решения.
 //Получаем ссылку на элемент
-const nameInput = document.querySelector("name-input");
-const nameOutput = document.querySelector("name-output");
-
+const refs = {
+  input: document.querySelector("#name-input"),
+  name: document.querySelector("#name-output"),
+};
 //Добавляем слушателя события
-nameInput.addEventListener("input", nameChange);
+refs.input.addEventListener("input", onInputChange);
 
-function nameChange(event) {
+function onInputChange(event) {
+  refs.name.textContent = event.currentTarget.value;
+
   if (event.currentTarget.value === "") {
-    nameOutput.textContent = "Anonymous";
-  } else {
-    nameOutput.textContent = event.currentTarget.value;
+    refs.name.textContent = "Anonymous";
   }
 }
